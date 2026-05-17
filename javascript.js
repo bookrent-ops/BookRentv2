@@ -4,6 +4,7 @@ import { initializeApp }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
+
   getFirestore,
   collection,
   addDoc,
@@ -11,12 +12,11 @@ import {
   doc,
   updateDoc,
   deleteDoc
+
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 // ================= FIREBASE CONFIG =================
-
-// เอาค่าจาก Firebase ของคุณมาใส่
 
 const firebaseConfig = {
 
@@ -55,7 +55,7 @@ function $(id){
 
 }
 
-// ================= ELEMENTS =================
+// ================= ELEMENT =================
 
 const roleText =
 $("roleText");
@@ -72,10 +72,7 @@ $("userProfile");
 const logoutBtn =
 $("logoutBtn");
 
-const profileImage =
-$("profileImage");
-
-// ================= USER STATE =================
+// ================= USER =================
 
 let currentUser = null;
 
@@ -84,7 +81,9 @@ let currentUser = null;
 function checkLogin(){
 
   const savedUser =
-  localStorage.getItem("bookrent_user");
+  localStorage.getItem(
+    "bookrent_user"
+  );
 
   if(savedUser){
 
@@ -94,11 +93,31 @@ function checkLogin(){
     roleText.textContent =
     currentUser.username;
 
-    openLoginBtn.classList.add("hidden");
+    openLoginBtn.classList.add(
+      "hidden"
+    );
 
-    openRegisterBtn.classList.add("hidden");
+    openRegisterBtn.classList.add(
+      "hidden"
+    );
 
-    userProfile.classList.remove("hidden");
+    userProfile.classList.remove(
+      "hidden"
+    );
+
+    // ADMIN MODE
+
+    if(currentUser.admin){
+
+      $("userInterface")
+      .classList.add("hidden");
+
+      $("adminDashboard")
+      .classList.remove("hidden");
+
+      renderAdminBooks();
+
+    }
 
   }
 
@@ -106,7 +125,7 @@ function checkLogin(){
 
 checkLogin();
 
-// ================= LOGIN POPUP =================
+// ================= LOGIN =================
 
 const loginPopup =
 $("loginPopup");
@@ -116,9 +135,12 @@ $("closeLoginPopup");
 
 if(openLoginBtn){
 
-  openLoginBtn.addEventListener("click", () => {
+  openLoginBtn.addEventListener(
+  "click", () => {
 
-    loginPopup.classList.remove("hidden");
+    loginPopup.classList.remove(
+      "hidden"
+    );
 
   });
 
@@ -126,28 +148,38 @@ if(openLoginBtn){
 
 if(closeLoginPopup){
 
-  closeLoginPopup.addEventListener("click", () => {
+  closeLoginPopup.addEventListener(
+  "click", () => {
 
-    loginPopup.classList.add("hidden");
+    loginPopup.classList.add(
+      "hidden"
+    );
 
   });
 
 }
 
-// ================= LOGIN =================
+// ================= LOGIN SYSTEM =================
 
 const loginBtn =
 $("loginBtn");
 
 if(loginBtn){
 
-  loginBtn.addEventListener("click", () => {
+  loginBtn.addEventListener(
+  "click", () => {
 
     const username =
-    $("loginUsername").value.trim();
+    $("loginUsername")
+    .value
+    .trim();
 
     const password =
-    $("loginPassword").value.trim();
+    $("loginPassword")
+    .value
+    .trim();
+
+    // ADMIN
 
     if(
       username === "admin" &&
@@ -169,11 +201,17 @@ if(loginBtn){
       roleText.textContent =
       "Admin";
 
-      openLoginBtn.classList.add("hidden");
+      openLoginBtn.classList.add(
+        "hidden"
+      );
 
-      openRegisterBtn.classList.add("hidden");
+      openRegisterBtn.classList.add(
+        "hidden"
+      );
 
-      userProfile.classList.remove("hidden");
+      userProfile.classList.remove(
+        "hidden"
+      );
 
       $("userInterface")
       .classList.add("hidden");
@@ -181,15 +219,23 @@ if(loginBtn){
       $("adminDashboard")
       .classList.remove("hidden");
 
-      loginPopup.classList.add("hidden");
+      loginPopup.classList.add(
+        "hidden"
+      );
 
       renderAdminBooks();
+
+      alert(
+        "เข้าสู่ระบบแอดมินสำเร็จ"
+      );
 
       return;
 
     }
 
-    const users =
+    // USER LOGIN
+
+    let users =
     JSON.parse(
       localStorage.getItem("users")
     ) || [];
@@ -206,13 +252,16 @@ if(loginBtn){
 
     if(!foundUser){
 
-      alert("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
+      alert(
+        "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"
+      );
 
       return;
 
     }
 
-    currentUser = foundUser;
+    currentUser =
+    foundUser;
 
     localStorage.setItem(
       "bookrent_user",
@@ -222,15 +271,25 @@ if(loginBtn){
     roleText.textContent =
     foundUser.username;
 
-    openLoginBtn.classList.add("hidden");
+    openLoginBtn.classList.add(
+      "hidden"
+    );
 
-    openRegisterBtn.classList.add("hidden");
+    openRegisterBtn.classList.add(
+      "hidden"
+    );
 
-    userProfile.classList.remove("hidden");
+    userProfile.classList.remove(
+      "hidden"
+    );
 
-    loginPopup.classList.add("hidden");
+    loginPopup.classList.add(
+      "hidden"
+    );
 
-    alert("เข้าสู่ระบบสำเร็จ");
+    alert(
+      "เข้าสู่ระบบสำเร็จ"
+    );
 
   });
 
@@ -240,7 +299,8 @@ if(loginBtn){
 
 if(logoutBtn){
 
-  logoutBtn.addEventListener("click", () => {
+  logoutBtn.addEventListener(
+  "click", () => {
 
     localStorage.removeItem(
       "bookrent_user"
@@ -257,9 +317,6 @@ if(logoutBtn){
 const registerModal =
 $("registerModal");
 
-const openRegister =
-$("openRegisterBtn");
-
 const closeRegisterModal =
 $("closeRegisterModal");
 
@@ -269,11 +326,14 @@ $("registerBtn");
 const registerTermsCheck =
 $("registerTermsCheck");
 
-if(openRegister){
+if(openRegisterBtn){
 
-  openRegister.addEventListener("click", () => {
+  openRegisterBtn.addEventListener(
+  "click", () => {
 
-    registerModal.classList.remove("hidden");
+    registerModal.classList.remove(
+      "hidden"
+    );
 
   });
 
@@ -281,17 +341,23 @@ if(openRegister){
 
 if(closeRegisterModal){
 
-  closeRegisterModal.addEventListener("click", () => {
+  closeRegisterModal.addEventListener(
+  "click", () => {
 
-    registerModal.classList.add("hidden");
+    registerModal.classList.add(
+      "hidden"
+    );
 
   });
 
 }
 
+// ================= ENABLE REGISTER =================
+
 if(registerTermsCheck){
 
-  registerTermsCheck.addEventListener("change", () => {
+  registerTermsCheck.addEventListener(
+  "change", () => {
 
     registerBtn.disabled =
     !registerTermsCheck.checked;
@@ -300,23 +366,30 @@ if(registerTermsCheck){
 
 }
 
-// ================= REGISTER ACCOUNT =================
+// ================= REGISTER SYSTEM =================
 
 if(registerBtn){
 
-  registerBtn.addEventListener("click", () => {
+  registerBtn.addEventListener(
+  "click", () => {
 
     const username =
-    $("registerUsername").value.trim();
+    $("registerUsername")
+    .value
+    .trim();
 
     const phone =
-    $("registerPhone").value.trim();
+    $("registerPhone")
+    .value
+    .trim();
 
     const password =
-    $("registerPassword").value;
+    $("registerPassword")
+    .value;
 
     const confirmPassword =
-    $("registerConfirmPassword").value;
+    $("registerConfirmPassword")
+    .value;
 
     if(
       !username ||
@@ -325,7 +398,9 @@ if(registerBtn){
       !confirmPassword
     ){
 
-      alert("กรอกข้อมูลให้ครบ");
+      alert(
+        "กรอกข้อมูลให้ครบ"
+      );
 
       return;
 
@@ -333,7 +408,9 @@ if(registerBtn){
 
     if(password !== confirmPassword){
 
-      alert("รหัสผ่านไม่ตรงกัน");
+      alert(
+        "รหัสผ่านไม่ตรงกัน"
+      );
 
       return;
 
@@ -347,13 +424,17 @@ if(registerBtn){
     const exists =
     users.find(user => {
 
-      return user.username === username;
+      return (
+        user.username === username
+      );
 
     });
 
     if(exists){
 
-      alert("ชื่อผู้ใช้นี้ถูกใช้แล้ว");
+      alert(
+        "ชื่อผู้ใช้นี้ถูกใช้แล้ว"
+      );
 
       return;
 
@@ -379,20 +460,31 @@ if(registerBtn){
       JSON.stringify(newUser)
     );
 
-    currentUser = newUser;
+    currentUser =
+    newUser;
 
     roleText.textContent =
     username;
 
-    openLoginBtn.classList.add("hidden");
+    openLoginBtn.classList.add(
+      "hidden"
+    );
 
-    openRegisterBtn.classList.add("hidden");
+    openRegisterBtn.classList.add(
+      "hidden"
+    );
 
-    userProfile.classList.remove("hidden");
+    userProfile.classList.remove(
+      "hidden"
+    );
 
-    registerModal.classList.add("hidden");
+    registerModal.classList.add(
+      "hidden"
+    );
 
-    alert("สมัครบัญชีสำเร็จ");
+    alert(
+      "สมัครบัญชีสำเร็จ"
+    );
 
   });
 
@@ -411,9 +503,12 @@ $("closeTermsPopup");
 
 if(openTermsPopup){
 
-  openTermsPopup.addEventListener("click", () => {
+  openTermsPopup.addEventListener(
+  "click", () => {
 
-    termsPopup.classList.remove("hidden");
+    termsPopup.classList.remove(
+      "hidden"
+    );
 
   });
 
@@ -421,9 +516,12 @@ if(openTermsPopup){
 
 if(closeTermsPopup){
 
-  closeTermsPopup.addEventListener("click", () => {
+  closeTermsPopup.addEventListener(
+  "click", () => {
 
-    termsPopup.classList.add("hidden");
+    termsPopup.classList.add(
+      "hidden"
+    );
 
   });
 
@@ -441,7 +539,8 @@ let imageBase64 = "";
 
 if(bookImage){
 
-  bookImage.addEventListener("change", function(){
+  bookImage.addEventListener(
+  "change", function(){
 
     const file =
     this.files[0];
@@ -459,7 +558,9 @@ if(bookImage){
         previewImage.src =
         reader.result;
 
-        previewImage.classList.remove("hidden");
+        previewImage.classList.remove(
+          "hidden"
+        );
 
       };
 
@@ -478,13 +579,17 @@ $("bookForm");
 
 if(bookForm){
 
-  bookForm.addEventListener("submit", async function(e){
+  bookForm.addEventListener(
+  "submit",
+  async function(e){
 
     e.preventDefault();
 
     if(!currentUser){
 
-      alert("กรุณา Login ก่อน");
+      alert(
+        "กรุณา Login ก่อน"
+      );
 
       return;
 
@@ -498,7 +603,7 @@ if(bookForm){
 
     const checkedCategories =
     document.querySelectorAll(
-      '.multi-category input:checked'
+    '.multi-category input:checked'
     );
 
     const category =
@@ -511,7 +616,9 @@ if(bookForm){
 
     if(!imageBase64){
 
-      alert("กรุณาใส่รูปหนังสือ");
+      alert(
+        "กรุณาใส่รูปหนังสือ"
+      );
 
       return;
 
@@ -523,6 +630,7 @@ if(bookForm){
       author,
       category,
       deposit,
+
       image:imageBase64,
 
       owner:
@@ -533,16 +641,21 @@ if(bookForm){
     };
 
     await addDoc(
+
       collection(db,"books"),
+
       newBook
+
     );
 
     $("statusMessage").innerHTML =
-    "⏳ รอแอดมินอนุมัติ";
+    "⏳ ส่งข้อมูลสำเร็จ รอแอดมินอนุมัติ";
 
     this.reset();
 
-    previewImage.classList.add("hidden");
+    previewImage.classList.add(
+      "hidden"
+    );
 
     imageBase64 = "";
 
@@ -550,7 +663,7 @@ if(bookForm){
 
 }
 
-// ================= RENDER APPROVED BOOKS =================
+// ================= RENDER BOOKS =================
 
 async function renderApprovedBooks(){
 
@@ -580,6 +693,11 @@ async function renderApprovedBooks(){
 
     card.className =
     "book-card";
+
+    card.setAttribute(
+      "data-category",
+      book.category
+    );
 
     card.innerHTML = `
 
@@ -653,9 +771,11 @@ async function renderAdminBooks(){
 
         <p>${book.deposit} บาท</p>
 
-        <p>${book.owner}</p>
+        <p>ผู้ปล่อย:
+        ${book.owner}</p>
 
-        <p>${book.status}</p>
+        <p>สถานะ:
+        ${book.status}</p>
 
         <div class="admin-actions">
 
@@ -680,34 +800,59 @@ async function renderAdminBooks(){
     `;
 
     const approveBtn =
-    card.querySelector(".approve-btn");
+    card.querySelector(
+      ".approve-btn"
+    );
 
     const rejectBtn =
-    card.querySelector(".reject-btn");
+    card.querySelector(
+      ".reject-btn"
+    );
 
-    approveBtn.addEventListener("click",
+    // APPROVE
+
+    approveBtn.addEventListener(
+    "click",
     async () => {
 
       await updateDoc(
-        doc(db,"books",docItem.id),
+
+        doc(
+          db,
+          "books",
+          docItem.id
+        ),
+
         {
           status:"approved"
         }
+
       );
 
       renderAdminBooks();
+
       renderApprovedBooks();
 
     });
 
-    rejectBtn.addEventListener("click",
+    // DELETE
+
+    rejectBtn.addEventListener(
+    "click",
     async () => {
 
       await deleteDoc(
-        doc(db,"books",docItem.id)
+
+        doc(
+          db,
+          "books",
+          docItem.id
+        )
+
       );
 
       renderAdminBooks();
+
       renderApprovedBooks();
 
     });
@@ -718,7 +863,108 @@ async function renderAdminBooks(){
 
 }
 
-// ================= REVIEWS =================
+// ================= CATEGORY =================
+
+const categoryButtons =
+document.querySelectorAll(
+".category-btn"
+);
+
+categoryButtons.forEach(button => {
+
+  button.addEventListener(
+  "click", () => {
+
+    categoryButtons.forEach(btn => {
+
+      btn.classList.remove(
+        "active"
+      );
+
+    });
+
+    button.classList.add(
+      "active"
+    );
+
+    const category =
+    button.dataset.category;
+
+    const cards =
+    document.querySelectorAll(
+      ".book-card"
+    );
+
+    cards.forEach(card => {
+
+      if(
+        category === "all" ||
+        card.dataset.category.includes(category)
+      ){
+
+        card.style.display =
+        "block";
+
+      }else{
+
+        card.style.display =
+        "none";
+
+      }
+
+    });
+
+  });
+
+});
+
+// ================= RENT MODAL =================
+
+const rentModal =
+$("rentModal");
+
+const closeRentModal =
+$("closeRentModal");
+
+function openRentModal(book){
+
+  rentModal.classList.remove(
+    "hidden"
+  );
+
+  $("rentBookImage").src =
+  book.image;
+
+  $("rentBookTitle").textContent =
+  book.title;
+
+  $("rentBookAuthor").textContent =
+  "ผู้เขียน: " + book.author;
+
+  $("rentBookCategory").textContent =
+  "หมวดหมู่: " + book.category;
+
+  $("rentBookDeposit").textContent =
+  "ค่ามัดจำ: " +
+  book.deposit +
+  " บาท";
+
+}
+
+if(closeRentModal){
+
+  closeRentModal.addEventListener(
+  "click", () => {
+
+    rentModal.classList.add(
+      "hidden"
+    );
+
+  });
+
+}
+
+// ================= REVIEW =================
 
 let selectedStars = 0;
 
@@ -729,18 +975,25 @@ document.querySelectorAll(
 
 stars.forEach(star => {
 
-  star.addEventListener("click", () => {
+  star.addEventListener(
+  "click", () => {
 
     selectedStars =
     star.dataset.star;
 
     stars.forEach(s => {
 
-      s.classList.remove("active");
+      s.classList.remove(
+        "active"
+      );
 
     });
 
-    for(let i = 0; i < selectedStars; i++){
+    for(
+      let i = 0;
+      i < selectedStars;
+      i++
+    ){
 
       stars[i]
       .classList.add("active");
@@ -751,19 +1004,22 @@ stars.forEach(star => {
 
 });
 
-// ================= SUBMIT REVIEW =================
+// ================= SEND REVIEW =================
 
 const submitReviewBtn =
 $("submitReviewBtn");
 
 if(submitReviewBtn){
 
-  submitReviewBtn.addEventListener("click",
+  submitReviewBtn.addEventListener(
+  "click",
   async () => {
 
     if(!currentUser){
 
-      alert("กรุณา Login");
+      alert(
+        "กรุณา Login ก่อน"
+      );
 
       return;
 
@@ -788,7 +1044,9 @@ if(submitReviewBtn){
     }
 
     await addDoc(
+
       collection(db,"reviews"),
+
       {
 
         user:
@@ -800,6 +1058,7 @@ if(submitReviewBtn){
         selectedStars
 
       }
+
     );
 
     $("reviewMessage").value =
@@ -809,7 +1068,9 @@ if(submitReviewBtn){
 
     stars.forEach(s => {
 
-      s.classList.remove("active");
+      s.classList.remove(
+        "active"
+      );
 
     });
 
@@ -819,7 +1080,7 @@ if(submitReviewBtn){
 
 }
 
-// ================= RENDER REVIEWS =================
+// ================= RENDER REVIEW =================
 
 async function renderReviews(){
 
@@ -846,7 +1107,11 @@ async function renderReviews(){
 
     let starHTML = "";
 
-    for(let i = 0; i < review.stars; i++){
+    for(
+      let i = 0;
+      i < review.stars;
+      i++
+    ){
 
       starHTML += "★";
 
