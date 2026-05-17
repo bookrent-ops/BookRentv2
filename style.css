@@ -1,0 +1,682 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Kanit',sans-serif;
+  background:#f4f7fb;
+  color:#111;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:white;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 5%;
+  box-shadow:0 4px 10px rgba(0,0,0,0.05);
+}
+
+.logo{
+  font-size:1.5rem;
+  font-weight:700;
+  color:#143d59;
+}
+
+.nav-links{
+  display:flex;
+  list-style:none;
+  gap:20px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#143d59;
+  font-weight:500;
+}
+
+.profile{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* ================= USER PROFILE ================= */
+
+#userProfile{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+#profileImage{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+#logoutBtn{
+  border:none;
+  padding:10px 14px;
+  border-radius:12px;
+  cursor:pointer;
+  background:#ef4444;
+  color:white;
+  font-weight:600;
+  transition:.2s;
+}
+
+#logoutBtn:hover{
+  transform:translateY(-2px);
+}
+
+.login-nav-btn,
+.register-nav-btn{
+  border:none;
+  padding:10px 16px;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:600;
+  transition:.2s;
+}
+
+.login-nav-btn:hover,
+.register-nav-btn:hover{
+  transform:translateY(-2px);
+}
+
+.login-nav-btn{
+  background:#143d59;
+  color:white;
+}
+
+.register-nav-btn{
+  background:#e5e7eb;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  min-height:70vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:40px;
+
+  background:
+  linear-gradient(
+    rgba(20,61,89,.7),
+    rgba(20,61,89,.7)
+  ),
+  url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=1600&auto=format&fit=crop');
+
+  background-size:cover;
+  background-position:center;
+
+  color:white;
+}
+
+.hero h1{
+  font-size:3rem;
+}
+
+.hero p{
+  margin-top:15px;
+  font-size:1.1rem;
+}
+
+/* ================= CATEGORY ================= */
+
+.categories{
+  padding:50px 5%;
+}
+
+.category-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:20px;
+}
+
+.category-btn{
+  border:none;
+  padding:10px 18px;
+  border-radius:30px;
+  background:white;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.category-btn:hover{
+  transform:translateY(-2px);
+}
+
+.category-btn.active{
+  background:#143d59;
+  color:white;
+}
+
+/* ================= BOOK GRID ================= */
+
+.book-grid{
+  padding:0 5% 60px;
+  column-count:4;
+  column-gap:20px;
+}
+
+.book-card{
+  display:inline-block;
+  width:100%;
+  margin-bottom:20px;
+  background:white;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 5px 16px rgba(0,0,0,0.08);
+  break-inside:avoid;
+  transition:.25s;
+}
+
+.book-card:hover{
+  transform:translateY(-5px);
+}
+
+.book-card img{
+  width:100%;
+  display:block;
+  object-fit:cover;
+}
+
+.book-content{
+  padding:16px;
+}
+
+.book-content h3{
+  margin-bottom:8px;
+}
+
+.book-content p{
+  margin-top:6px;
+  color:#444;
+}
+
+.rent-btn{
+  width:100%;
+  margin-top:15px;
+  border:none;
+  padding:14px;
+  border-radius:12px;
+  background:#143d59;
+  color:white;
+  cursor:pointer;
+  font-weight:600;
+}
+
+/* ================= LISTING ================= */
+
+.listing-section{
+  padding:60px 5%;
+}
+
+.listing-box{
+  max-width:700px;
+  margin:auto;
+  background:white;
+  padding:30px;
+  border-radius:24px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.listing-box form{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.listing-box input{
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:#f3f3f3;
+}
+
+.submit-btn{
+  border:none;
+  padding:16px;
+  border-radius:14px;
+  background:#2d6cdf;
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.submit-btn:hover{
+  transform:translateY(-2px);
+}
+
+.preview{
+  width:100%;
+  border-radius:16px;
+}
+
+/* ================= MULTI CATEGORY ================= */
+
+.multi-category{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.multi-category label{
+  background:#f3f4f6;
+  padding:10px 14px;
+  border-radius:12px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.multi-category label:hover{
+  background:#dbeafe;
+}
+
+.multi-category input{
+  margin-right:6px;
+}
+
+/* ================= REVIEWS ================= */
+
+.reviews{
+  padding:80px 5%;
+  background:#f8fbff;
+}
+
+.reviews-container{
+  max-width:900px;
+  margin:auto;
+}
+
+.reviews h2{
+  text-align:center;
+  margin-bottom:40px;
+  font-size:2rem;
+  color:#143d59;
+}
+
+.review-form-box{
+  background:white;
+  padding:30px;
+  border-radius:24px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.08);
+  margin-bottom:40px;
+}
+
+.review-form-box textarea{
+  width:100%;
+  min-height:140px;
+  border:none;
+  background:#f3f6fb;
+  border-radius:18px;
+  padding:20px;
+  resize:none;
+  font-family:'Kanit',sans-serif;
+  font-size:1rem;
+}
+
+.star-select{
+  display:flex;
+  gap:10px;
+  margin-top:20px;
+}
+
+.star-select span{
+  font-size:2rem;
+  cursor:pointer;
+  color:#cbd5e1;
+  transition:.2s;
+}
+
+.star-select span.active{
+  color:#facc15;
+  transform:scale(1.1);
+}
+
+#submitReviewBtn{
+  width:100%;
+  margin-top:25px;
+  border:none;
+  padding:16px;
+  border-radius:16px;
+  background:#143d59;
+  color:white;
+  font-size:1rem;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.review-list{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.review-card{
+  background:white;
+  padding:25px;
+  border-radius:22px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.07);
+}
+
+.review-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:15px;
+}
+
+.review-user{
+  font-weight:600;
+  color:#143d59;
+}
+
+.review-stars{
+  color:#facc15;
+  font-size:1.2rem;
+}
+
+.review-text{
+  line-height:1.8;
+  color:#333;
+}
+
+/* ================= CONTACT ================= */
+
+.contact{
+  padding:60px 5%;
+  text-align:center;
+}
+
+/* ================= LOGIN / REGISTER ================= */
+
+.login-modal,
+.register-modal,
+.terms-popup,
+.rent-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.7);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+  padding:20px;
+}
+
+.login-box,
+.register-box,
+.terms-popup-box{
+  width:100%;
+  max-width:500px;
+  background:white;
+  border-radius:24px;
+  padding:30px;
+  position:relative;
+}
+
+.login-box input,
+.register-box input{
+  width:100%;
+  margin-top:15px;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:#f3f3f3;
+}
+
+.register-btn{
+  width:100%;
+  border:none;
+  padding:14px;
+  border-radius:14px;
+  margin-top:20px;
+  background:#143d59;
+  color:white;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.register-btn:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.close-login,
+.close-register,
+.close-terms-popup,
+.close-rent{
+  position:absolute;
+  top:20px;
+  right:20px;
+  font-size:1.4rem;
+  cursor:pointer;
+}
+
+.register-terms{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:20px;
+}
+
+.register-terms span{
+  color:#2563eb;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.terms-popup-content{
+  margin-top:20px;
+  line-height:2;
+}
+
+/* ================= RENT MODAL ================= */
+
+.rent-box{
+  width:100%;
+  max-width:1100px;
+  max-height:95vh;
+  overflow-y:auto;
+  background:white;
+  border-radius:24px;
+  padding:30px;
+  position:relative;
+}
+
+.rent-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+}
+
+.rent-left img{
+  width:100%;
+  border-radius:20px;
+}
+
+.rent-right h2{
+  margin-bottom:10px;
+}
+
+.rent-terms{
+  margin-top:25px;
+}
+
+.rent-terms ul{
+  margin-top:10px;
+  padding-left:20px;
+  line-height:1.8;
+}
+
+.shipping-section{
+  margin-top:30px;
+}
+
+.shipping-section input,
+.shipping-section textarea,
+.shipping-section select{
+  width:100%;
+  margin-top:12px;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:#f3f3f3;
+}
+
+.shipping-section textarea{
+  min-height:120px;
+  resize:none;
+}
+
+.confirm-rent-btn{
+  width:100%;
+  margin-top:30px;
+  border:none;
+  padding:16px;
+  border-radius:14px;
+  background:#10b981;
+  color:white;
+  font-size:1rem;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* ================= ADMIN ================= */
+
+#adminDashboard{
+  min-height:100vh;
+  background:#111827;
+  color:white;
+  padding:40px 5%;
+}
+
+.admin-header{
+  margin-bottom:40px;
+}
+
+.admin-books{
+  display:grid;
+  grid-template-columns:
+  repeat(auto-fill,minmax(240px,240px));
+  gap:30px;
+  justify-content:start;
+}
+
+.admin-card{
+  width:240px;
+  background:#1f2937;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:
+  0 8px 24px rgba(0,0,0,0.25);
+  transition:.25s;
+}
+
+.admin-card:hover{
+  transform:translateY(-5px);
+}
+
+.admin-card img{
+  width:100%;
+  aspect-ratio:2/3;
+  object-fit:cover;
+  display:block;
+}
+
+.admin-content{
+  padding:20px;
+}
+
+.admin-actions{
+  display:flex;
+  gap:10px;
+  margin-top:20px;
+}
+
+.approve-btn,
+.reject-btn{
+  flex:1;
+  border:none;
+  padding:12px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.approve-btn{
+  background:#10b981;
+  color:white;
+}
+
+.reject-btn{
+  background:#ef4444;
+  color:white;
+}
+
+/* ================= UTIL ================= */
+
+.hidden{
+  display:none !important;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1200px){
+
+  .book-grid{
+    column-count:3;
+  }
+
+}
+
+@media(max-width:900px){
+
+  .book-grid{
+    column-count:2;
+  }
+
+  .rent-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:700px){
+
+  .navbar{
+    flex-direction:column;
+    gap:15px;
+  }
+
+  .book-grid{
+    column-count:1;
+  }
+
+  .admin-books{
+    grid-template-columns:
+    repeat(auto-fill,minmax(170px,170px));
+
+    justify-content:center;
+  }
+
+  .admin-card{
+    width:170px;
+  }
+
+}

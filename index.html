@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+  content="width=device-width, initial-scale=1.0">
+
+  <title>BookRent Platform</title>
+
+  <link rel="preconnect"
+  href="https://fonts.googleapis.com">
+
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet">
+
+  <link rel="stylesheet"
+  href="style.css">
+
+</head>
+
+<body>
+
+<!-- ================= LOGIN POPUP ================= -->
+
+<div class="login-modal hidden"
+id="loginPopup">
+
+  <div class="login-box">
+
+    <span class="close-login"
+    id="closeLoginPopup">
+      ✕
+    </span>
+
+    <h2>เข้าสู่ระบบ</h2>
+
+    <input type="text"
+    id="loginUsername"
+    placeholder="ชื่อผู้ใช้">
+
+    <input type="password"
+    id="loginPassword"
+    placeholder="รหัสผ่าน">
+
+    <button class="register-btn"
+    id="loginBtn">
+
+      เข้าสู่ระบบ
+
+    </button>
+
+  </div>
+
+</div>
+
+<!-- ================= REGISTER ================= -->
+
+<div class="register-modal hidden"
+id="registerModal">
+
+  <div class="register-box">
+
+    <span class="close-register"
+    id="closeRegisterModal">
+      ✕
+    </span>
+
+    <h2>สมัครบัญชี</h2>
+
+    <input type="text"
+    id="registerUsername"
+    placeholder="ชื่อผู้ใช้">
+
+    <input type="text"
+    id="registerPhone"
+    placeholder="เบอร์โทรศัพท์">
+
+    <input type="password"
+    id="registerPassword"
+    placeholder="รหัสผ่าน">
+
+    <input type="password"
+    id="registerConfirmPassword"
+    placeholder="ยืนยันรหัสผ่าน">
+
+    <div class="register-terms">
+
+      <input type="checkbox"
+      id="registerTermsCheck">
+
+      <p>
+
+        ฉันยอมรับ
+
+        <span id="openTermsPopup">
+          เงื่อนไขการใช้บริการ
+        </span>
+
+      </p>
+
+    </div>
+
+    <button class="register-btn"
+    id="registerBtn"
+    disabled>
+
+      สมัครบัญชี
+
+    </button>
+
+  </div>
+
+</div>
+
+<!-- ================= TERMS ================= -->
+
+<div class="terms-popup hidden"
+id="termsPopup">
+
+  <div class="terms-popup-box">
+
+    <span class="close-terms-popup"
+    id="closeTermsPopup">
+      ✕
+    </span>
+
+    <h2>📜 เงื่อนไขการใช้บริการ</h2>
+
+    <div class="terms-popup-content">
+
+      <p>1. ระบบมัดจำตามราคาปกหนังสือ</p>
+
+      <p>2. ระยะเวลาเช่า 14 วัน</p>
+
+      <p>3. ส่งคืนผ่าน EMS / ลงทะเบียน</p>
+
+      <p>4. ค่าปรับกรณีคืนช้าหรือเสียหาย</p>
+
+      <p>5. ธุรกรรมอิเล็กทรอนิกส์ตามกฎหมายแพ่ง</p>
+
+      <p>6. ยักยอกทรัพย์มีความผิดทางอาญา</p>
+
+      <p>7. ระบบคุ้มครองข้อมูล PDPA</p>
+
+      <p>8. ระบบ Blacklist ผู้ใช้งานผิดเงื่อนไข</p>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ================= RENT MODAL ================= -->
+
+<div class="rent-modal hidden"
+id="rentModal">
+
+  <div class="rent-box">
+
+    <span class="close-rent"
+    id="closeRentModal">
+      ✕
+    </span>
+
+    <div class="rent-grid">
+
+      <div class="rent-left">
+
+        <img id="rentBookImage">
+
+      </div>
+
+      <div class="rent-right">
+
+        <h2 id="rentBookTitle"></h2>
+
+        <p id="rentBookAuthor"></p>
+
+        <p id="rentBookCategory"></p>
+
+        <p id="rentBookDeposit"></p>
+
+        <div class="rent-terms">
+
+          <h3>📜 เงื่อนไขการเช่า</h3>
+
+          <ul>
+
+            <li>ระยะเวลาเช่า 14 วัน</li>
+
+            <li>คืนผ่าน EMS / ลงทะเบียน</li>
+
+            <li>หนังสือเสียหายมีค่าปรับ</li>
+
+            <li>ต้องชำระค่ามัดจำก่อนเช่า</li>
+
+          </ul>
+
+        </div>
+
+        <div class="shipping-section">
+
+          <h3>🚚 ข้อมูลจัดส่ง</h3>
+
+          <input type="text"
+          placeholder="ชื่อ - นามสกุล">
+
+          <input type="text"
+          placeholder="เบอร์โทรศัพท์">
+
+          <textarea
+          placeholder="ที่อยู่จัดส่ง"></textarea>
+
+          <select>
+
+            <option>EMS</option>
+
+            <option>ลงทะเบียน</option>
+
+            <option>Flash Express</option>
+
+          </select>
+
+        </div>
+
+        <button class="confirm-rent-btn">
+
+          ยืนยันการเช่าหนังสือ
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+  <div class="logo">
+    📚 BookRent
+  </div>
+
+  <nav>
+
+    <ul class="nav-links">
+
+      <li>
+        <a href="#home">
+          หน้าหลัก
+        </a>
+      </li>
+
+      <li>
+        <a href="#listing">
+          ปล่อยเช่า
+        </a>
+      </li>
+
+      <li>
+        <a href="#reviews">
+          รีวิว
+        </a>
+      </li>
+
+      <li>
+        <a href="#contact">
+          ติดต่อ
+        </a>
+      </li>
+
+    </ul>
+
+  </nav>
+
+  <!-- ================= PROFILE ================= -->
+
+  <div class="profile">
+
+    <button class="login-nav-btn"
+    id="openLoginBtn">
+      Login
+    </button>
+
+    <button class="register-nav-btn"
+    id="openRegisterBtn">
+      สมัครบัญชี
+    </button>
+
+    <div id="userProfile"
+    class="hidden">
+
+      <img
+      id="profileImage"
+      src="https://i.pravatar.cc/40">
+
+      <span id="roleText">
+        Guest
+      </span>
+
+      <button id="logoutBtn">
+        ออกจากระบบ
+      </button>
+
+    </div>
+
+  </div>
+
+</header>
+
+<!-- ================= USER ================= -->
+
+<div id="userInterface">
+
+<!-- ================= HERO ================= -->
+
+<section class="hero"
+id="home">
+
+  <div class="hero-content">
+
+    <h1>
+      แพลตฟอร์มปล่อยเช่าหนังสือ
+    </h1>
+
+    <p>
+      แชร์หนังสือของคุณให้ผู้อื่นได้อ่าน
+    </p>
+
+  </div>
+
+</section>
+
+<!-- ================= CATEGORY ================= -->
+
+<section class="categories">
+
+  <h2>หมวดหมู่</h2>
+
+  <div class="category-buttons">
+
+    <button class="category-btn active"
+    data-category="all">
+      ทั้งหมด
+    </button>
+
+    <button class="category-btn"
+    data-category="นวนิยาย">
+      นวนิยาย
+    </button>
+
+    <button class="category-btn"
+    data-category="มังงะ">
+      มังงะ
+    </button>
+
+    <button class="category-btn"
+    data-category="จิตวิทยา">
+      จิตวิทยา
+    </button>
+
+    <button class="category-btn"
+    data-category="ธุรกิจ">
+      ธุรกิจ
+    </button>
+
+    <button class="category-btn"
+    data-category="แรงบันดาลใจ">
+      แรงบันดาลใจ
+    </button>
+
+    <button class="category-btn"
+    data-category="พัฒนาตัวเอง">
+      พัฒนาตัวเอง
+    </button>
+
+    <button class="category-btn"
+    data-category="ไลท์โนเวล">
+      ไลท์โนเวล
+    </button>
+
+    <button class="category-btn"
+    data-category="วรรณกรรม">
+      วรรณกรรม
+    </button>
+
+    <button class="category-btn"
+    data-category="นิยายวาย">
+      นิยายวาย
+    </button>
+
+  </div>
+
+</section>
+
+<!-- ================= BOOK GRID ================= -->
+
+<section class="book-grid"
+id="approvedBooks"></section>
+
+<!-- ================= LISTING ================= -->
+
+<section class="listing-section"
+id="listing">
+
+  <div class="listing-box">
+
+    <h2>
+      ปล่อยเช่าหนังสือ
+    </h2>
+
+    <form id="bookForm">
+
+      <input type="text"
+      id="bookTitle"
+      placeholder="ชื่อหนังสือ"
+      required>
+
+      <input type="text"
+      id="bookAuthor"
+      placeholder="ชื่อผู้เขียน"
+      required>
+
+      <div class="multi-category">
+
+        <label>
+          <input type="checkbox"
+          value="นวนิยาย">
+          นวนิยาย
+        </label>
+
+        <label>
+          <input type="checkbox"
+          value="มังงะ">
+          มังงะ
+        </label>
+        <label>
+          <input type="checkbox"
+          value="จิตวิทยา">
+          จิตวิทยา
+        </label>
+
+        <label>
+          <input type="checkbox"
+          value="ธุรกิจ">
+          ธุรกิจ
+        </label>
+
+        <label>
+          <input type="checkbox"
+          value="แรงบันดาลใจ">
+          แรงบันดาลใจ
+        </label>
+
+        <label>
+          <input type="checkbox"
+          value="พัฒนาตัวเอง">
+          พัฒนาตัวเอง
+        </label>
+
+        <label>
+          <input type="checkbox"
+          value="ไลท์โนเวล">
+          ไลท์โนเวล
+        </label>
+
+        <label>
+          <input type="checkbox"
+          value="วรรณกรรม">
+          วรรณกรรม
+        </label>
+
+        <label>
+          <input type="checkbox"
+          value="นิยายวาย">
+          นิยายวาย
+        </label>
+
+
+      </div>
+
+      <input type="number"
+      id="bookDeposit"
+      placeholder="ราคามัดจำ">
+
+      <input type="file"
+      id="bookImage"
+      accept="image/*">
+
+      <img id="previewImage"
+      class="preview hidden">
+
+      <button type="submit"
+      class="submit-btn">
+
+        ส่งข้อมูล
+
+      </button>
+
+    </form>
+
+    <div id="statusMessage"></div>
+
+  </div>
+
+</section>
+
+<!-- ================= REVIEWS ================= -->
+
+<section class="reviews"
+id="reviews">
+
+  <div class="reviews-container">
+
+    <h2>รีวิวจากผู้ใช้งาน</h2>
+
+    <div class="review-form-box">
+
+      <textarea
+      id="reviewMessage"
+      placeholder="เขียนรีวิวของคุณ..."></textarea>
+
+      <div class="star-select">
+
+        <span data-star="1">★</span>
+        <span data-star="2">★</span>
+        <span data-star="3">★</span>
+        <span data-star="4">★</span>
+        <span data-star="5">★</span>
+
+      </div>
+
+      <button id="submitReviewBtn">
+
+        ส่งรีวิว
+
+      </button>
+
+    </div>
+
+    <div class="review-list"
+    id="reviewList"></div>
+
+  </div>
+
+</section>
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact"
+id="contact">
+
+  <h2>ติดต่อ</h2>
+
+  <p>
+    Email: support@bookrent.com
+  </p>
+
+</section>
+
+</div>
+
+<!-- ================= ADMIN ================= -->
+
+<div id="adminDashboard"
+class="hidden">
+
+  <div class="admin-header">
+
+    <h1>
+      📚 Admin Dashboard
+    </h1>
+
+    <p>
+      ระบบตรวจสอบหนังสือก่อนเผยแพร่
+    </p>
+
+  </div>
+
+  <div class="admin-books"
+  id="adminBooks"></div>
+
+</div>
+
+<script src="javascript.js"></script>
+
+</body>
+</html>
