@@ -48,39 +48,6 @@ body{
   gap:10px;
 }
 
-.login-nav-btn,
-.register-nav-btn,
-#logoutBtn{
-  border:none;
-  padding:10px 16px;
-  border-radius:12px;
-  cursor:pointer;
-  font-weight:600;
-  transition:.2s;
-}
-
-.login-nav-btn{
-  background:#143d59;
-  color:white;
-}
-
-.register-nav-btn{
-  background:#e5e7eb;
-}
-
-#logoutBtn{
-  background:#ef4444;
-  color:white;
-}
-
-.login-nav-btn:hover,
-.register-nav-btn:hover,
-#logoutBtn:hover{
-  transform:translateY(-2px);
-}
-
-/* ================= PROFILE ================= */
-
 #userProfile{
   display:flex;
   align-items:center;
@@ -99,6 +66,34 @@ body{
   color:#143d59;
 }
 
+#logoutBtn{
+  border:none;
+  background:#ef4444;
+  color:white;
+  padding:10px 14px;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.login-nav-btn,
+.register-nav-btn{
+  border:none;
+  padding:10px 16px;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.login-nav-btn{
+  background:#143d59;
+  color:white;
+}
+
+.register-nav-btn{
+  background:#e5e7eb;
+}
+
 /* ================= HERO ================= */
 
 .hero{
@@ -108,7 +103,6 @@ body{
   align-items:center;
   text-align:center;
   padding:40px;
-
   background:
   linear-gradient(
     rgba(20,61,89,.7),
@@ -118,7 +112,6 @@ body{
 
   background-size:cover;
   background-position:center;
-
   color:white;
 }
 
@@ -154,7 +147,7 @@ body{
   background:white;
   cursor:pointer;
   transition:.2s;
-  font-weight:500;
+  font-family:'Kanit',sans-serif;
 }
 
 .category-btn:hover{
@@ -192,8 +185,9 @@ body{
 
 .book-card img{
   width:100%;
-  display:block;
+  aspect-ratio:2/3;
   object-fit:cover;
+  display:block;
 }
 
 .book-content{
@@ -219,11 +213,7 @@ body{
   color:white;
   cursor:pointer;
   font-weight:600;
-  transition:.2s;
-}
-
-.rent-btn:hover{
-  opacity:.9;
+  font-family:'Kanit',sans-serif;
 }
 
 /* ================= LISTING ================= */
@@ -267,11 +257,7 @@ body{
   color:white;
   font-weight:600;
   cursor:pointer;
-  transition:.2s;
-}
-
-.submit-btn:hover{
-  transform:translateY(-2px);
+  font-family:'Kanit',sans-serif;
 }
 
 .preview{
@@ -279,7 +265,7 @@ body{
   border-radius:16px;
 }
 
-/* ================= MULTI CATEGORY ================= */
+/* ================= CATEGORY CHECKBOX ================= */
 
 .multi-category{
   display:flex;
@@ -371,6 +357,7 @@ body{
   font-size:1rem;
   font-weight:600;
   cursor:pointer;
+  font-family:'Kanit',sans-serif;
 }
 
 .review-list{
@@ -468,6 +455,7 @@ body{
   color:white;
   cursor:pointer;
   font-weight:600;
+  font-family:'Kanit',sans-serif;
 }
 
 .register-btn:disabled{
@@ -532,10 +520,6 @@ body{
   margin-bottom:10px;
 }
 
-.rent-right p{
-  margin-top:8px;
-}
-
 .rent-terms{
   margin-top:25px;
 }
@@ -544,27 +528,6 @@ body{
   margin-top:10px;
   padding-left:20px;
   line-height:1.8;
-}
-
-.shipping-section{
-  margin-top:30px;
-}
-
-.shipping-section input,
-.shipping-section textarea,
-.shipping-section select{
-  width:100%;
-  margin-top:12px;
-  padding:14px;
-  border:none;
-  border-radius:12px;
-  background:#f3f3f3;
-  font-family:'Kanit',sans-serif;
-}
-
-.shipping-section textarea{
-  min-height:120px;
-  resize:none;
 }
 
 .confirm-rent-btn{
@@ -578,6 +541,7 @@ body{
   font-size:1rem;
   font-weight:600;
   cursor:pointer;
+  font-family:'Kanit',sans-serif;
 }
 
 /* ================= ADMIN ================= */
@@ -597,17 +561,17 @@ body{
   display:grid;
   grid-template-columns:
   repeat(auto-fill,minmax(240px,240px));
-
   gap:30px;
+  justify-content:start;
 }
 
 .admin-card{
+  width:240px;
   background:#1f2937;
   border-radius:24px;
   overflow:hidden;
   box-shadow:
   0 8px 24px rgba(0,0,0,0.25);
-
   transition:.25s;
 }
 
@@ -619,18 +583,15 @@ body{
   width:100%;
   aspect-ratio:2/3;
   object-fit:cover;
+  display:block;
 }
 
 .admin-content{
   padding:20px;
 }
 
-.admin-content h3{
-  margin-bottom:10px;
-}
-
 .admin-content p{
-  margin-top:6px;
+  margin-top:8px;
 }
 
 .admin-actions{
@@ -646,7 +607,7 @@ body{
   padding:12px;
   border-radius:10px;
   cursor:pointer;
-  font-weight:600;
+  font-family:'Kanit',sans-serif;
 }
 
 .approve-btn{
@@ -694,17 +655,24 @@ body{
     gap:15px;
   }
 
+  .book-grid{
+    column-count:1;
+  }
+
   .nav-links{
     flex-wrap:wrap;
     justify-content:center;
   }
 
-  .book-grid{
-    column-count:1;
+  .admin-books{
+    grid-template-columns:
+    repeat(auto-fill,minmax(170px,170px));
+
+    justify-content:center;
   }
 
-  .admin-books{
-    grid-template-columns:1fr;
+  .admin-card{
+    width:170px;
   }
 
 }
