@@ -95,7 +95,9 @@ id="registerModal">
         ฉันยอมรับ
 
         <span id="openTermsPopup">
+
           เงื่อนไขการใช้บริการ
+
         </span>
 
       </p>
@@ -138,13 +140,9 @@ id="termsPopup">
 
       <p>4. ค่าปรับกรณีคืนช้าหรือเสียหาย</p>
 
-      <p>5. ธุรกรรมอิเล็กทรอนิกส์ตามกฎหมายแพ่ง</p>
+      <p>5. ระบบคุ้มครองข้อมูลผู้ใช้</p>
 
-      <p>6. ยักยอกทรัพย์มีความผิดทางอาญา</p>
-
-      <p>7. ระบบคุ้มครองข้อมูล PDPA</p>
-
-      <p>8. ระบบ Blacklist ผู้ใช้งานผิดเงื่อนไข</p>
+      <p>6. การยักยอกมีความผิดตามกฎหมาย</p>
 
     </div>
 
@@ -152,7 +150,7 @@ id="termsPopup">
 
 </div>
 
-<!-- ================= RENT MODAL ================= -->
+<!-- ================= RENT ================= -->
 
 <div class="rent-modal hidden"
 id="rentModal">
@@ -190,7 +188,7 @@ id="rentModal">
 
             <li>ระยะเวลาเช่า 14 วัน</li>
 
-            <li>คืนผ่าน EMS / ลงทะเบียน</li>
+            <li>คืนผ่าน EMS</li>
 
             <li>หนังสือเสียหายมีค่าปรับ</li>
 
@@ -200,34 +198,9 @@ id="rentModal">
 
         </div>
 
-        <div class="shipping-section">
-
-          <h3>🚚 ข้อมูลจัดส่ง</h3>
-
-          <input type="text"
-          placeholder="ชื่อ - นามสกุล">
-
-          <input type="text"
-          placeholder="เบอร์โทรศัพท์">
-
-          <textarea
-          placeholder="ที่อยู่จัดส่ง"></textarea>
-
-          <select>
-
-            <option>EMS</option>
-
-            <option>ลงทะเบียน</option>
-
-            <option>Flash Express</option>
-
-          </select>
-
-        </div>
-
         <button class="confirm-rent-btn">
 
-          ยืนยันการเช่าหนังสือ
+          ยืนยันการเช่า
 
         </button>
 
@@ -279,23 +252,25 @@ id="rentModal">
 
   </nav>
 
-  <!-- ================= PROFILE ================= -->
-
   <div class="profile">
 
-    <!-- BEFORE LOGIN -->
+    <!-- LOGIN / REGISTER -->
 
     <button class="login-nav-btn"
     id="openLoginBtn">
+
       Login
+
     </button>
 
     <button class="register-nav-btn"
     id="openRegisterBtn">
+
       สมัครบัญชี
+
     </button>
 
-    <!-- AFTER LOGIN -->
+    <!-- USER PROFILE -->
 
     <div id="userProfile"
     class="hidden">
@@ -305,11 +280,15 @@ id="rentModal">
       src="https://i.pravatar.cc/40">
 
       <span id="roleText">
+
         Guest
+
       </span>
 
       <button id="logoutBtn">
+
         ออกจากระบบ
+
       </button>
 
     </div>
@@ -330,11 +309,15 @@ id="home">
   <div class="hero-content">
 
     <h1>
+
       แพลตฟอร์มปล่อยเช่าหนังสือ
+
     </h1>
 
     <p>
+
       แชร์หนังสือของคุณให้ผู้อื่นได้อ่าน
+
     </p>
 
   </div>
@@ -351,52 +334,44 @@ id="home">
 
     <button class="category-btn active"
     data-category="all">
+
       ทั้งหมด
+
     </button>
 
     <button class="category-btn"
     data-category="นวนิยาย">
+
       นวนิยาย
+
     </button>
 
     <button class="category-btn"
     data-category="มังงะ">
+
       มังงะ
+
     </button>
 
     <button class="category-btn"
     data-category="จิตวิทยา">
+
       จิตวิทยา
+
     </button>
 
     <button class="category-btn"
     data-category="ธุรกิจ">
+
       ธุรกิจ
+
     </button>
 
     <button class="category-btn"
     data-category="แรงบันดาลใจ">
+
       แรงบันดาลใจ
-    </button>
 
-    <button class="category-btn"
-    data-category="พัฒนาตัวเอง">
-      พัฒนาตัวเอง
-    </button>
-
-    <button class="category-btn"
-    data-category="ไลท์โนเวล">
-      ไลท์โนเวล
-    </button>
-
-    <button class="category-btn"
-    data-category="วรรณกรรม">
-      วรรณกรรม
-    </button>
-
-    <button class="category-btn"
-    data-category="นิยายวาย">
-      นิยายวาย
     </button>
 
   </div>
@@ -416,7 +391,9 @@ id="listing">
   <div class="listing-box">
 
     <h2>
+
       ปล่อยเช่าหนังสือ
+
     </h2>
 
     <form id="bookForm">
@@ -431,62 +408,53 @@ id="listing">
       placeholder="ชื่อผู้เขียน"
       required>
 
-      <!-- MULTI CATEGORY -->
+      <!-- CATEGORY -->
 
       <div class="multi-category">
 
         <label>
+
           <input type="checkbox"
           value="นวนิยาย">
+
           นวนิยาย
+
         </label>
 
         <label>
+
           <input type="checkbox"
           value="มังงะ">
+
           มังงะ
+
         </label>
 
         <label>
+
           <input type="checkbox"
           value="จิตวิทยา">
+
           จิตวิทยา
+
         </label>
 
         <label>
+
           <input type="checkbox"
           value="ธุรกิจ">
+
           ธุรกิจ
+
         </label>
 
         <label>
+
           <input type="checkbox"
           value="แรงบันดาลใจ">
+
           แรงบันดาลใจ
-        </label>
 
-        <label>
-          <input type="checkbox"
-          value="พัฒนาตัวเอง">
-          พัฒนาตัวเอง
-        </label>
-
-        <label>
-          <input type="checkbox"
-          value="ไลท์โนเวล">
-          ไลท์โนเวล
-        </label>
-
-        <label>
-          <input type="checkbox"
-          value="วรรณกรรม">
-          วรรณกรรม
-        </label>
-
-        <label>
-          <input type="checkbox"
-          value="นิยายวาย">
-          นิยายวาย
         </label>
 
       </div>
@@ -526,6 +494,8 @@ id="reviews">
 
     <h2>รีวิวจากผู้ใช้งาน</h2>
 
+    <!-- FORM -->
+
     <div class="review-form-box">
 
       <textarea
@@ -550,6 +520,8 @@ id="reviews">
 
     </div>
 
+    <!-- LIST -->
+
     <div class="review-list"
     id="reviewList"></div>
 
@@ -565,7 +537,9 @@ id="contact">
   <h2>ติดต่อ</h2>
 
   <p>
+
     Email: support@bookrent.com
+
   </p>
 
 </section>
@@ -580,11 +554,15 @@ class="hidden">
   <div class="admin-header">
 
     <h1>
+
       📚 Admin Dashboard
+
     </h1>
 
     <p>
+
       ระบบตรวจสอบหนังสือก่อนเผยแพร่
+
     </p>
 
   </div>
@@ -594,9 +572,10 @@ class="hidden">
 
 </div>
 
-<!-- ================= SCRIPT ================= -->
+<!-- IMPORTANT -->
 
-<script src="javascript.js"></script>
+<script type="module"
+src="javascript.js"></script>
 
 </body>
 </html>
