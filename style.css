@@ -48,7 +48,38 @@ body{
   gap:10px;
 }
 
-/* ================= USER PROFILE ================= */
+.login-nav-btn,
+.register-nav-btn,
+#logoutBtn{
+  border:none;
+  padding:10px 16px;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:600;
+  transition:.2s;
+}
+
+.login-nav-btn{
+  background:#143d59;
+  color:white;
+}
+
+.register-nav-btn{
+  background:#e5e7eb;
+}
+
+#logoutBtn{
+  background:#ef4444;
+  color:white;
+}
+
+.login-nav-btn:hover,
+.register-nav-btn:hover,
+#logoutBtn:hover{
+  transform:translateY(-2px);
+}
+
+/* ================= PROFILE ================= */
 
 #userProfile{
   display:flex;
@@ -63,43 +94,9 @@ body{
   object-fit:cover;
 }
 
-#logoutBtn{
-  border:none;
-  padding:10px 14px;
-  border-radius:12px;
-  cursor:pointer;
-  background:#ef4444;
-  color:white;
+#roleText{
   font-weight:600;
-  transition:.2s;
-}
-
-#logoutBtn:hover{
-  transform:translateY(-2px);
-}
-
-.login-nav-btn,
-.register-nav-btn{
-  border:none;
-  padding:10px 16px;
-  border-radius:12px;
-  cursor:pointer;
-  font-weight:600;
-  transition:.2s;
-}
-
-.login-nav-btn:hover,
-.register-nav-btn:hover{
-  transform:translateY(-2px);
-}
-
-.login-nav-btn{
-  background:#143d59;
-  color:white;
-}
-
-.register-nav-btn{
-  background:#e5e7eb;
+  color:#143d59;
 }
 
 /* ================= HERO ================= */
@@ -140,11 +137,14 @@ body{
   padding:50px 5%;
 }
 
+.categories h2{
+  margin-bottom:20px;
+}
+
 .category-buttons{
   display:flex;
   flex-wrap:wrap;
   gap:10px;
-  margin-top:20px;
 }
 
 .category-btn{
@@ -154,6 +154,7 @@ body{
   background:white;
   cursor:pointer;
   transition:.2s;
+  font-weight:500;
 }
 
 .category-btn:hover{
@@ -218,6 +219,11 @@ body{
   color:white;
   cursor:pointer;
   font-weight:600;
+  transition:.2s;
+}
+
+.rent-btn:hover{
+  opacity:.9;
 }
 
 /* ================= LISTING ================= */
@@ -235,6 +241,10 @@ body{
   box-shadow:0 5px 20px rgba(0,0,0,0.08);
 }
 
+.listing-box h2{
+  margin-bottom:25px;
+}
+
 .listing-box form{
   display:flex;
   flex-direction:column;
@@ -246,6 +256,7 @@ body{
   border:none;
   border-radius:12px;
   background:#f3f3f3;
+  font-family:'Kanit',sans-serif;
 }
 
 .submit-btn{
@@ -431,6 +442,11 @@ body{
   position:relative;
 }
 
+.login-box h2,
+.register-box h2{
+  margin-bottom:20px;
+}
+
 .login-box input,
 .register-box input{
   width:100%;
@@ -439,6 +455,7 @@ body{
   border:none;
   border-radius:12px;
   background:#f3f3f3;
+  font-family:'Kanit',sans-serif;
 }
 
 .register-btn{
@@ -515,6 +532,10 @@ body{
   margin-bottom:10px;
 }
 
+.rent-right p{
+  margin-top:8px;
+}
+
 .rent-terms{
   margin-top:25px;
 }
@@ -538,6 +559,7 @@ body{
   border:none;
   border-radius:12px;
   background:#f3f3f3;
+  font-family:'Kanit',sans-serif;
 }
 
 .shipping-section textarea{
@@ -575,17 +597,17 @@ body{
   display:grid;
   grid-template-columns:
   repeat(auto-fill,minmax(240px,240px));
+
   gap:30px;
-  justify-content:start;
 }
 
 .admin-card{
-  width:240px;
   background:#1f2937;
   border-radius:24px;
   overflow:hidden;
   box-shadow:
   0 8px 24px rgba(0,0,0,0.25);
+
   transition:.25s;
 }
 
@@ -597,11 +619,18 @@ body{
   width:100%;
   aspect-ratio:2/3;
   object-fit:cover;
-  display:block;
 }
 
 .admin-content{
   padding:20px;
+}
+
+.admin-content h3{
+  margin-bottom:10px;
+}
+
+.admin-content p{
+  margin-top:6px;
 }
 
 .admin-actions{
@@ -617,6 +646,7 @@ body{
   padding:12px;
   border-radius:10px;
   cursor:pointer;
+  font-weight:600;
 }
 
 .approve-btn{
@@ -664,19 +694,17 @@ body{
     gap:15px;
   }
 
+  .nav-links{
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
   .book-grid{
     column-count:1;
   }
 
   .admin-books{
-    grid-template-columns:
-    repeat(auto-fill,minmax(170px,170px));
-
-    justify-content:center;
-  }
-
-  .admin-card{
-    width:170px;
+    grid-template-columns:1fr;
   }
 
 }
